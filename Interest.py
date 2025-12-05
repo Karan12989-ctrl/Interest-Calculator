@@ -24,4 +24,4 @@ elif choice==2:
     print(f"Compund Interest = {ci:.2f}")
     print(f"Total Amount = {principal + ci:.2f}")
 else:
-    print("Choice (1 & 2) is Invalid, Try Again")
+    print("Your Choice is Invalid, Try Again")
