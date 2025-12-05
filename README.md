@@ -1,40 +1,39 @@
 # 📊 Interest Calculator (Simple & Compound Interest)
 
-This project is a simple Python-based **Interest Calculator** that allows users to calculate:
+This project is a beginner-friendly **Python Interest Calculator** that helps users compute:
 
-- ✔ Simple Interest  
-- ✔ Compound Interest  
+- ✔ Simple Interest (SI)  
+- ✔ Compound Interest (CI)  
 - ✔ Total Amount after interest  
 
-The user selects the type of interest, enters the principal amount, rate, and time, and the calculator returns the results.
+Users enter the principal amount, rate of interest, and time period. The program then calculates and displays the results clearly.
 
 ---
 
 ## 🚀 Features
 
-- Easy-to-use console interface  
-- Calculates **Simple Interest**  
-- Calculates **Compound Interest**  
-- Formats results up to 2 decimal places  
-- Beginner-friendly code  
+- 🧮 Calculates **Simple Interest**  
+- 🔁 Calculates **Compound Interest**  
+- 🎯 Accurate results (formatted to 2 decimal places)  
+- 💡 Simple and beginner-friendly code  
+- 🖥️ Console-based interaction  
 
 ---
 
 ## 🧮 Formula Used
 
 ### ✔ Simple Interest  
-\[
-SI = \frac{P \times R \times T}{100}
-\]
+SI = (P × R × T) / 100
+
+shell
+Copy code
 
 ### ✔ Compound Interest  
-\[
-A = P\left(1 + \frac{R}{100}\right)^T
-\]
-
-\[
+A = P × (1 + R/100)^T
 CI = A - P
-\]
+
+python
+Copy code
 
 ---
 
@@ -70,10 +69,9 @@ elif choice == 2:
 
 else:
     print("Invalid Choice! Please enter 1 or 2.")
-
----
-
-## 📌 Example Output
+📌 Example Output
+java
+Copy code
 ---- Interest Calculator ----
 1. Simple Interest
 2. Compound Interest
@@ -83,14 +81,9 @@ Enter Rate of Interest (%): 10
 Enter Time (in years): 2
 Compound Interest = 210.00
 Total Amount = 1210.00
+🧑‍💻 Author
+Karan
 
----
-
-##🧑‍💻 Author
-
-Karan (You can edit this section)
----
-
-##📄 License
-
-This project is open-source. Feel free to modify and use it anywhere.
+📄 License
+This project is open-source.
+You are free to use, modify, or improve it.
