@@ -1,1 +1,170 @@
-<html><head><body></body></head></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interest Calculator</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        margin: 0;
+        padding: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 420px;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(10px);
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #555;
+        margin-top: 12px;
+        display: block;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px 12px;
+        margin-top: 6px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        outline: none;
+        font-size: 14px;
+    }
+
+    input:focus, select:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 2px rgba(102,126,234,0.2);
+    }
+
+    button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #0a1aa8, #6d1fbb);
+        color: white;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .result {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f3f5ff;
+        border-left: 5px solid #667eea;
+        border-radius: 10px;
+        font-size: 15px;
+        color: #333;
+    }
+
+    .result strong {
+        color: #000;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>💰 Interest Calculator</h2>
+
+    <label>Principal Amount (₹)
+        <input type="number" id="principal" min="0">
+    </label>
+
+    <label>Interest Rate (% per year)
+        <input type="number" id="rate" min="0">
+    </label>
+
+    <label>Time (Years)
+        <input type="number" id="time" min="0">
+    </label>
+
+    <label>Interest Type
+        <select id="type" onchange="toggleFreq()">
+            <option value="simple">Simple Interest</option>
+            <option value="compound">Compound Interest</option>
+        </select>
+    </label>
+
+    <label id="freqBox" style="display:none">
+        Compounding Frequency
+        <select id="freq">
+            <option value="1">Yearly</option>
+            <option value="2">Half-Yearly</option>
+            <option value="4">Quarterly</option>
+            <option value="12">Monthly</option>
+        </select>
+    </label>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="output" class="result" style="display:none"></div>
+</div>
+
+<script>
+    function toggleFreq() {
+        const type = document.getElementById("type").value;
+        document.getElementById("freqBox").style.display =
+            type === "compound" ? "block" : "none";
+    }
+
+    function calculate() {
+        const p = Number(principal.value);
+        const r = Number(rate.value);
+        const t = Number(time.value);
+        const type = document.getElementById("type").value;
+        const n = Number(freq.value || 1);
+
+        let interest, total;
+
+        if (type === "simple") {
+            interest = (p * r * t) / 100;
+            total = p + interest;
+        } else {
+            total = p * Math.pow(1 + (r / 100) / n, n * t);
+            interest = total - p;
+        }
+
+        output.style.display = "block";
+        output.innerHTML = `
+            <strong>Interest Earned:</strong> ₹${interest.toFixed(2)}<br>
+            <strong>Total Amount:</strong> ₹${total.toFixed(2)}
+        `;
+    }
+</script>
+
+</body>
+</html>
